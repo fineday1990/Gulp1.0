@@ -6,7 +6,7 @@ const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
 //удаляет пробелы и минифицирует css файл
 const cleanCSS = require('gulp-clean-css');
-//перводит новые стандарты js в более рание версии
+//переводит новые стандарты js в более ранние версии
 const babel = require('gulp-babel');
 //минифицирует js файлы
 const uglify = require('gulp-uglify');
