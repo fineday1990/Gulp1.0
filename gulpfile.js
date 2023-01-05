@@ -1,3 +1,4 @@
+//gulp
 const gulp = require('gulp');
 //компилирует sass код в css
 const sass = require('gulp-sass')(require('sass'));
@@ -9,6 +10,10 @@ const cleanCSS = require('gulp-clean-css');
 const babel = require('gulp-babel');
 //минифицирует js файлы
 const uglify = require('gulp-uglify');
+//отображает в панели разработчика в каком файле и на какой строке находится элемент
+const sourcemaps = require('gulp-sourcemaps');
+//добавляет автопрефиксы в CSS файл
+const autoprefixer = require('gulp-autoprefixer');
 //соединяет js файлы в один
 const concat = require('gulp-concat');
 //удаляет фалы из папки, чистит папку dist
@@ -35,26 +40,41 @@ function clean() {
 function styles() {
     return gulp
         .src(paths.styles.src)
+        .pipe(sourcemaps.init())
         .pipe(sass())
-        .pipe(cleanCSS())
+        .pipe(
+            autoprefixer({
+                cascade: false,
+            })
+        )
+        .pipe(
+            cleanCSS({
+                level: 2,
+            })
+        )
         .pipe(
             rename({
                 basename: 'main',
                 suffix: '.min',
             })
         )
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styles.dest));
 }
 
 // работа со скриптами
 function scripts() {
     return gulp
-        .src(paths.scripts.src, {
-            sourcemaps: true,
-        })
-        .pipe(babel())
+        .src(paths.scripts.src)
+        .pipe(sourcemaps.init())
+        .pipe(
+            babel({
+                presets: ['@babel/env'],
+            })
+        )
         .pipe(uglify())
         .pipe(concat('main.min.js'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.scripts.dest));
 }
 

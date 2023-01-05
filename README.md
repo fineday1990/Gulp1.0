@@ -2,7 +2,7 @@
 
 С помощью этих файлов можно настроить сборку проекта на Gulp.
 
-## Структура каталогов для размещения файлов мтилей и скриптов:
+## Структура каталогов для размещения файлов cтилей и скриптов:
 
 > ./src/styles/\*\*/\*.sass  
 > ./src/scripts/\*\*/\*.js
@@ -24,7 +24,9 @@
 [gulp-rename](https://www.npmjs.com/package/gulp-rename) переименовывает файлы  
 [gulp-sass](https://www.npmjs.com/package/gulp-sass) компилирует sass файл в CSS  
 [sass](https://www.npmjs.com/package/sass) компилятор sass  
-[gulp-uglify](https://www.npmjs.com/package/gulp-uglify) сжимает и оптимизирует JS код
+[gulp-uglify](https://www.npmjs.com/package/gulp-uglify) сжимает и оптимизирует JS код  
+[gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) отображает в панели разработчика в каком файле и на какой строке находится элемент  
+[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) добавляет автопрефиксы в CSS файл
 
 ### Контакты
 
