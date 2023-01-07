@@ -22,8 +22,6 @@ const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 //показывает размер папок и файлов в терминале
 const size = require('gulp-size');
-//плагин для компиляции Pug
-// const gulpPug = require('gulp-pug');
 //позволяет отслеживать новые файлы
 const newer = require('gulp-newer');
 //запускает браузер, замена live server
@@ -33,10 +31,6 @@ const del = require('del');
 
 // Настройка путей
 const paths = {
-    // pug: {
-    //     src: 'src/*.pug',
-    //     dest: 'dist/',
-    // },
     html: {
         src: 'src/*.html',
         dest: 'dist/',
@@ -59,16 +53,6 @@ const paths = {
 function clean() {
     return del(['dist/*', '!dist/img']);
 }
-
-//работа с Pug
-// function pug() {
-//     return gulp
-//         .src(paths.pug.src)
-//         .pipe(gulpPug())
-//         .pipe(size())
-//         .pipe(gulp.dest(paths.pug.dest))
-//         .pipe(browserSync.stream());
-// }
 
 //работа с HTML
 function html() {
@@ -166,7 +150,6 @@ const build = gulp.series(
 
 exports.clean = clean;
 exports.img = img;
-// exports.pug = pug;
 exports.html = html;
 exports.styles = styles;
 exports.scripts = scripts;
